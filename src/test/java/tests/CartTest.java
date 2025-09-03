@@ -25,7 +25,7 @@ public class CartTest extends BaseTest {
         
     }
     
-//    @Test(priority = 1)
+    @Test(priority = 1)
     public void testAddProductToCart() {
         loginUser();
         
