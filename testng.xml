@@ -5,8 +5,10 @@
     <classes>
             <class name="tests.RegistrationTest"/>
             <class name="tests.LoginTest"/>
+            <class name="tests.ProductCategoryTest"/>
+            <class name="tests.ContactFormTest"/>
             <class name="tests.CartTest"/>
-            <class name="tests.PurchaseTest"/>
+     		<class name="tests.PurchaseTest"/>
             <class name="tests.LogoutTest"/>
         </classes>
   </test> <!-- Test -->
