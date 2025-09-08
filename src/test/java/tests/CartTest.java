@@ -19,7 +19,6 @@ public class CartTest extends BaseTest {
         homePage = new HomePage(driver);
         cartPage = new CartPage(driver);
         
-        // Login and clear cart before each test
         loginUser();
         clearCart();
     }
@@ -39,9 +38,8 @@ public class CartTest extends BaseTest {
     
     private void clearCart() {
         homePage.clickCart();
-        cartPage.deleteAllItems(); // Clear any existing items
+        cartPage.deleteAllItems(); 
         
-        // Navigate back to home
         driver.navigate().to(BASE_URL);
         
         try {
@@ -53,35 +51,27 @@ public class CartTest extends BaseTest {
     
     @Test(priority = 1)
     public void testAddProductToCart() {
-        // Click on Samsung Galaxy S6
         homePage.clickProduct("Samsung galaxy s6");
-        
-        // Add to cart
         cartPage.addToCart();
         
-        // Handle alert
         String alertText = TestUtils.getAlertText(driver);
         Assert.assertEquals(alertText, "Product added.", 
                 "Product should be added to cart");
         
-        // Go to cart and verify product is there
         homePage.clickCart();
         Assert.assertTrue(cartPage.isProductInCart("Samsung galaxy s6"), 
                 "Samsung Galaxy S6 should be in cart");
         
-        // Verify exactly 1 item in cart
         int itemCount = cartPage.getCartItemsCount();
         Assert.assertEquals(itemCount, 1, "Should have exactly 1 item in cart");
     }
     
     @Test(priority = 2)
     public void testAddSameProductTwice() {
-        // Add Samsung Galaxy S6 first time
         homePage.clickProduct("Samsung galaxy s6");
         cartPage.addToCart();
         TestUtils.getAlertText(driver); 
         
-        // Navigate back to home
         driver.navigate().to(BASE_URL);
         try {
             Thread.sleep(1000);
@@ -89,12 +79,10 @@ public class CartTest extends BaseTest {
             e.printStackTrace();
         }
         
-        // Add same product second time
         homePage.clickProduct("Samsung galaxy s6");
         cartPage.addToCart();
         TestUtils.getAlertText(driver); 
         
-        // Go to cart and verify count
         homePage.clickCart();
         int itemCount = cartPage.getCartItemsCount();
         Assert.assertEquals(itemCount, 2, 
@@ -108,7 +96,6 @@ public class CartTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         CartPage cartPage = new CartPage(driver);
         
-        // Add two items first
         homePage.clickProduct("Nokia lumia 1520");
         cartPage.addToCart();
         TestUtils.getAlertText(driver);
@@ -118,12 +105,10 @@ public class CartTest extends BaseTest {
         cartPage.addToCart();
         TestUtils.getAlertText(driver);
         
-        // Go to cart
         homePage.clickCart();
         int initialCount = cartPage.getCartItemsCount();
         Assert.assertEquals(initialCount, 2, "Should start with 2 items");
         
-        // Remove one item
         cartPage.deleteFirstItem();
         
         try {
@@ -132,7 +117,6 @@ public class CartTest extends BaseTest {
             e.printStackTrace();
         }
         
-        // Verify count decreased
         int finalCount = cartPage.getCartItemsCount();
         Assert.assertEquals(finalCount, initialCount - 1, 
                 "Item count should decrease after removal");

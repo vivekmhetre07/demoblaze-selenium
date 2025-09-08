@@ -77,7 +77,7 @@ demoblaze-selenium/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/demoblaze-selenium.git
+   git clone https://github.com/vivekmhetre07/demoblaze-selenium.git
    cd demoblaze-selenium
    ```
 2. Install Java JDK (11+), Maven, and Chrome browser.
