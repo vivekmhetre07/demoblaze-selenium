@@ -34,13 +34,12 @@ public class ContactFormTest extends BaseTest {
         contactPage.clickContact();
         
         String email = "test@example.com";
-        String name = "John Doe";
+        String name = "Vivek Mhetre";
         String message = "This is a test message for contact form validation.";
         
         contactPage.fillContactForm(email, name, message);
         contactPage.sendMessage();
         
-        // Verify success message
         String alertText = TestUtils.getAlertText(driver);
         Assert.assertEquals(alertText, "Thanks for the message!!", 
                 "Should show success message for valid contact form submission");
@@ -52,7 +51,6 @@ public class ContactFormTest extends BaseTest {
     public void testContactFormWithEmptyFields() {
         contactPage.clickContact();
         
-        // Submit form with all empty fields
         contactPage.fillContactForm("", "", "");
         contactPage.sendMessage();
         

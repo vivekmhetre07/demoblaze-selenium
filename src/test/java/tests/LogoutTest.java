@@ -13,7 +13,6 @@ public class LogoutTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         
-        // Login first
         homePage.clickLogin();
         loginPage.loginUser("admin", "admin");
         
@@ -23,21 +22,17 @@ public class LogoutTest extends BaseTest {
             e.printStackTrace();
         }
         
-        // Verify user is logged in
         Assert.assertTrue(homePage.isLoggedIn(), 
                 "User should be logged in before logout");
         
-        // Logout
         homePage.clickLogout();
         
-        // Wait for logout to process
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         
-        // Verify user is logged out
         Assert.assertTrue(homePage.isLoggedOut(), 
                 "User should be logged out successfully");
     }

@@ -17,7 +17,6 @@ public class LoginTest extends BaseTest {
         homePage.clickLogin();
         loginPage.loginUser("", "");
         
-        // Verify alert for blank credentials
         String alertText = TestUtils.getAlertText(driver);
         Assert.assertEquals(alertText, "Please fill out Username and Password.", 
                 "Should show error for blank credentials");
@@ -31,7 +30,6 @@ public class LoginTest extends BaseTest {
         homePage.clickLogin();
         loginPage.loginUser("admin", "wrongpassword");
         
-        // Verify alert for wrong password
         String alertText = TestUtils.getAlertText(driver);
         Assert.assertEquals(alertText, "Wrong password.", 
                 "Should show error for wrong password");
@@ -45,7 +43,6 @@ public class LoginTest extends BaseTest {
         homePage.clickLogin();
         loginPage.loginUser("admin", "admin");
         
-        // Wait a bit for login to process
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

@@ -15,7 +15,7 @@ public class BaseTest {
     
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.edgedriver().setup();
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
